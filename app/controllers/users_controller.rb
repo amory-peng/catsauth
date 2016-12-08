@@ -11,7 +11,10 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
+
     if user.save
+      #dont actually have email for user in signup
+    #  msg = UserMailer.welcome_email(user)
       login_user(user)
     else
       redirect_to new_user_url
